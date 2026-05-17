@@ -24,6 +24,13 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
+Before pushing, run the test suite and linter locally:
+
+```bash
+pytest tests/ -v
+ruff check core/ tests/ app.py pages/
+```
+
 The app runs at http://localhost:8501. All data is stored locally in `prism.db` (SQLite) — it is git-ignored, so your test data never touches the repo.
 
 ---
@@ -63,6 +70,8 @@ prism/
 - [ ] No hardcoded API keys or credentials
 - [ ] New dependencies added to `requirements.txt`
 - [ ] Page titles updated if a new page was added
+- [ ] `ruff check core/ tests/ app.py pages/` passes with no errors
+- [ ] `pytest tests/ -v` passes with no failures
 
 ---
 
