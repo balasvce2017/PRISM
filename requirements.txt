@@ -1,4 +1,5 @@
 streamlit>=1.35.0
+pytest>=8.0.0
 # LLM providers — install only what you need
 anthropic>=0.28.0        # Anthropic direct API
 openai>=1.30.0           # OpenAI + Azure OpenAI
