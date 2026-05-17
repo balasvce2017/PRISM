@@ -8,7 +8,8 @@ Supported providers:
 """
 from __future__ import annotations
 from typing import Optional
-import json, re
+import json
+import re
 
 
 # ── Prompt ────────────────────────────────────────────────────────────────────

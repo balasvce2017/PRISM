@@ -1,5 +1,7 @@
 """SQLite persistence layer for Prism."""
-import sqlite3, uuid, json
+import sqlite3
+import uuid
+import json
 from pathlib import Path
 from contextlib import contextmanager
 
@@ -189,10 +191,14 @@ def list_codes(project_id: str) -> list[dict]:
 def update_code(code_id: str, label: str = None, definition: str = None,
                 category: str = None, color: str = None):
     with conn() as c:
-        if label      is not None: c.execute("UPDATE codes SET label=? WHERE id=?", (label, code_id))
-        if definition is not None: c.execute("UPDATE codes SET definition=? WHERE id=?", (definition, code_id))
-        if category   is not None: c.execute("UPDATE codes SET category=? WHERE id=?", (category, code_id))
-        if color      is not None: c.execute("UPDATE codes SET color=? WHERE id=?", (color, code_id))
+        if label is not None:
+            c.execute("UPDATE codes SET label=? WHERE id=?", (label, code_id))
+        if definition is not None:
+            c.execute("UPDATE codes SET definition=? WHERE id=?", (definition, code_id))
+        if category is not None:
+            c.execute("UPDATE codes SET category=? WHERE id=?", (category, code_id))
+        if color is not None:
+            c.execute("UPDATE codes SET color=? WHERE id=?", (color, code_id))
 
 
 def delete_code(code_id: str):

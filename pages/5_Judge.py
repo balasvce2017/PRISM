@@ -1,16 +1,19 @@
 """Step 5: LLM-as-Judge calibration against human annotations."""
-import os, time
+import os
+import time
 import streamlit as st
 import pandas as pd
 import plotly.express as px
 from core import db
 from core.judge import (
     PROVIDERS, make_provider, provider_model_id, calibration_kappa,
-    AnthropicProvider, OpenAIProvider, BedrockProvider, AzureOpenAIProvider,
+    AnthropicProvider, OpenAIProvider, BedrockProvider,
 )
 
 st.set_page_config(page_title="Judge · Prism", page_icon="⚖️", layout="wide")
-from pathlib import Path; LOGO = str(Path(__file__).parent.parent / 'assets' / 'logo.svg'); st.logo(LOGO)
+from pathlib import Path  # noqa: E402
+LOGO = str(Path(__file__).parent.parent / "assets" / "logo.svg")
+st.logo(LOGO)
 db.init()
 
 st.title("⚖️ Step 5 — LLM-as-Judge Calibration")
@@ -211,8 +214,10 @@ def human_score_for(trace_id, criterion, annotator_id):
         return None
     assigned = trace_ann_map.get((trace_id, annotator_id), set())
     hits = src & assigned
-    if not hits:           return 2
-    if len(hits) == len(src): return 0
+    if not hits:
+        return 2
+    if len(hits) == len(src):
+        return 0
     return 1
 
 

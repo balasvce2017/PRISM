@@ -1,11 +1,13 @@
 """Step 1: Golden Query Curator — upload and select traces."""
-import json, io
+import json
 import streamlit as st
 import pandas as pd
 from core import db
 
 st.set_page_config(page_title="Curator · Prism", page_icon="📥", layout="wide")
-from pathlib import Path; LOGO = str(Path(__file__).parent.parent / 'assets' / 'logo.svg'); st.logo(LOGO)
+from pathlib import Path  # noqa: E402
+LOGO = str(Path(__file__).parent.parent / "assets" / "logo.svg")
+st.logo(LOGO)
 db.init()
 
 st.title("📥 Step 1 — Golden Query Curator")

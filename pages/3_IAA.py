@@ -2,11 +2,12 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-import plotly.graph_objects as go
 from core import db, iaa
 
 st.set_page_config(page_title="IAA · Prism", page_icon="📊", layout="wide")
-from pathlib import Path; LOGO = str(Path(__file__).parent.parent / 'assets' / 'logo.svg'); st.logo(LOGO)
+from pathlib import Path  # noqa: E402
+LOGO = str(Path(__file__).parent.parent / "assets" / "logo.svg")
+st.logo(LOGO)
 db.init()
 
 st.title("📊 Step 3 — Inter-Annotator Agreement")
@@ -42,11 +43,15 @@ macro_k = sum(all_kappas) / len(all_kappas) if all_kappas else None
 
 
 def kappa_label(k):
-    if k is None:     return "—", "off"
-    if k >= 0.8:      return f"{k:.2f}  ✅ Excellent", "normal"
-    if k >= 0.7:      return f"{k:.2f}  🟡 Good",      "normal"
-    if k >= 0.6:      return f"{k:.2f}  🟠 Fair",       "off"
-    return               f"{k:.2f}  🔴 Poor",           "off"
+    if k is None:
+        return "—", "off"
+    if k >= 0.8:
+        return f"{k:.2f}  ✅ Excellent", "normal"
+    if k >= 0.7:
+        return f"{k:.2f}  🟡 Good", "normal"
+    if k >= 0.6:
+        return f"{k:.2f}  🟠 Fair", "off"
+    return f"{k:.2f}  🔴 Poor", "off"
 
 
 m1, m2, m3, m4 = st.columns(4)

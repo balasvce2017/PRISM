@@ -1,9 +1,5 @@
 """Smoke tests — verify core modules initialise and basic DB operations work."""
-import json
-import os
-import tempfile
 import pytest
-from pathlib import Path
 
 
 # ── Point the DB at a temp file so tests never touch the real prism.db ────────
